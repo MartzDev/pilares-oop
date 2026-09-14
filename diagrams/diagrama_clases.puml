@@ -1,0 +1,33 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+abstract class Vehiculo {
+    - marca: String
+    - modelo: String
+    - tarifaBase: double
+    + Vehiculo(marca: String, modelo: String, tarifaBase: double)
+    + getMarca(): String
+    + getModelo(): String
+    + getTarifaBase(): double
+    + {abstract} calcularCostoAlquiler(dias: int): double
+}
+
+class Auto {
+    + Auto(marca: String, modelo: String, tarifaBase: double)
+    + calcularCostoAlquiler(dias: int): double
+}
+
+class Moto {
+    + Moto(marca: String, modelo: String, tarifaBase: double)
+    + calcularCostoAlquiler(dias: int): double
+}
+
+class Main {
+    + {static} main(args: String[]): void
+}
+
+Vehiculo <|-- Auto
+Vehiculo <|-- Moto
+Main ..> Vehiculo : "Utiliza polimorfismo"
+
+@enduml
